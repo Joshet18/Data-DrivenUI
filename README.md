@@ -16,7 +16,7 @@ A PocketMine-MP library to create and manage Data-Driven UIs!
 ## Create a DDUI
 Quick start, use `CustomForm::create('Title')->send($player);` to display a DDUI
 
-`Type::create(params)` creates a UI instance. Available types are [CustomForm](https://github.com/Joshet18/Data-DrivenUI/edit/main/README.md#customform) and [MessageBox](https://github.com/Joshet18/Data-DrivenUI/edit/main/README.md#messagebox).
+`Type::create(params)` creates a UI instance. Available types are [CustomForm](https://github.com/Joshet18/Data-DrivenUI/blob/main/README.md#customform) and [MessageBox](https://github.com/Joshet18/Data-DrivenUI/blob/main/README.md#messagebox).
 
 ## CustomForm
 > available methods:
@@ -39,6 +39,7 @@ Quick start, use `CustomForm::create('Title')->send($player);` to display a DDUI
 > 
 > Example:
 > ```php
+> $nf = fn() => null; //This value is for example purposes only.
 > $ui = CustomForm::create('CustomForm');
 > $ui->label("Label");
 > $ui->spacer();

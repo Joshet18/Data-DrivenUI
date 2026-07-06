@@ -31,7 +31,7 @@ class DataDrivenUIEventHandler implements Listener
 
     public function onQuit(PlayerQuitEvent $event): void
     {
-        unset($this->active[$event->getPlayer()->getName()]);
+        unset(DataDrivenUIHandler::$active[$event->getPlayer()->getName()]);
     }
 
     public function onReceive(DataPacketReceiveEvent $event): void
@@ -46,9 +46,9 @@ class DataDrivenUIEventHandler implements Listener
     private function handleClosed(Player $player, ServerboundDataDrivenScreenClosedPacket $packet): void
     {
         $name = $player->getName();
-        foreach ($this->active[$name] ?? [] as $instanceId => $entry) {
+        foreach (DataDrivenUIHandler::$active[$name] ?? [] as $instanceId => $entry) {
             if ($entry["formId"] === $packet->getFormId()) {
-                unset($this->active[$name][$instanceId]);
+                unset(DataDrivenUIHandler::$active[$name][$instanceId]);
                 $entry["ui"]->onClose($this->mapCloseReason($packet->getCloseReason()));
                 $player->getNetworkSession()->sendDataPacket(
                     ClientboundDataDrivenUICloseScreenPacket::create($entry["formId"])
@@ -70,7 +70,7 @@ class DataDrivenUIEventHandler implements Listener
         }
         $instanceId = (int) substr($update->getProperty(), $sep + 6);
 
-        $entry = $this->active[$name][$instanceId] ?? null;
+        $entry = DataDrivenUIHandler::$active[$name][$instanceId] ?? null;
         if ($entry === null) {
             return;
         }
@@ -88,7 +88,7 @@ class DataDrivenUIEventHandler implements Listener
 
         $shouldClose = $entry["ui"]->handleUpdate($update->getPath(), $value);
         if ($shouldClose) {
-            unset($this->active[$name][$instanceId]);
+            unset(DataDrivenUIHandler::$active[$name][$instanceId]);
             $entry["ui"]->onClose(DataDrivenUIHandler::CLOSE_REASON_PROGRAMMATIC);
             $player->getNetworkSession()->sendDataPacket(
                 ClientboundDataDrivenUICloseScreenPacket::create($entry["formId"])

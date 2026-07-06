@@ -26,7 +26,7 @@ final class DataDrivenUIHandler implements Listener
 	/**
 	 * @var array<string, array<int, array{ui: UI, formId: int, property: string, updateCount: int}>>
 	 */
-	private static array $active = [];
+	public static array $active = [];
 
 	private static int $nextId = 1;
 
