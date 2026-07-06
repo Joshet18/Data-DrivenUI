@@ -1,0 +1,25 @@
+{
+    "name": "joshet18/data-driven-ui",
+    "description": "A PocketMine-MP library to create and manage Data-Driven UIs!",
+    "type": "library",
+    "license": "GPL-3.0",
+    "require": {
+        "pocketmine/pocketmine-mp": "^5.44.2"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Joshet18"
+        }
+    ],
+    "extra": {
+        "virion": {
+            "spec": "3.0",
+            "namespace-root": "joshet18\\ddui"
+        }
+    }
+}
