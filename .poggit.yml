@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Joshet18/Data-DrivenUI
+build-by-default: true
+branches:
+- main
+projects:
+  Data-DrivenUI:
+    model: virion
+    type: library
+...
